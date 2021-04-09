@@ -2,12 +2,15 @@ HEIGHT = 100
 WIDTH = 100
 
 GRID_MODEL = [0] * HEIGHT
+NEXT_GRID_MODEL = [0] * HEIGHT
+
 
 for i in range(HEIGHT):
     GRID_MODEL[i] = [0] * WIDTH
+    NEXT_GRID_MODEL[i] = [0] * WIDTH
 
 def next_gen():
-    global GRID_MODEL
+    global GRID_MODEL, NEXT_GRID_MODEL
 
     for i in range(0, HEIGHT):
         for j in range(0, WIDTH):
@@ -21,6 +24,9 @@ def next_gen():
             elif GRID_MODEL[i][j] == 1:
                 if count == 2 or count == 3:
                     cell = 1
+            NEXT_GRID_MODEL[i][j] = cell
+
+    GRID_MODEL, NEXT_GRID_MODEL = NEXT_GRID_MODEL, GRID_MODEL
 
 def count_neighbors(grid, row, col):
 
