@@ -1,5 +1,12 @@
+import random
+
 HEIGHT = 100
 WIDTH = 100
+
+def randomize(grid, width, height):
+    for i in range(0, height):
+        for j in range(0, width):
+            grid[i][j] = random.randint(0,1)
 
 GRID_MODEL = [0] * HEIGHT
 NEXT_GRID_MODEL = [0] * HEIGHT
@@ -8,6 +15,8 @@ NEXT_GRID_MODEL = [0] * HEIGHT
 for i in range(HEIGHT):
     GRID_MODEL[i] = [0] * WIDTH
     NEXT_GRID_MODEL[i] = [0] * WIDTH
+
+randomize(GRID_MODEL, WIDTH, HEIGHT)
 
 def next_gen():
     global GRID_MODEL, NEXT_GRID_MODEL
@@ -25,6 +34,7 @@ def next_gen():
                 if count == 2 or count == 3:
                     cell = 1
             NEXT_GRID_MODEL[i][j] = cell
+            print('New value is {}'.format(NEXT_GRID_MODEL[i][j]))
 
     GRID_MODEL, NEXT_GRID_MODEL = NEXT_GRID_MODEL, GRID_MODEL
 
